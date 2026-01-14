@@ -11,7 +11,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [apiError, setapiError] = useState("");
   const [isLoading, setisLoading] = useState(false);
-  let { userLogin, setuserLogin } = useContext(UserContext);
+  let { setuserLogin } = useContext(UserContext);
 
   const schema = z.object({
     email: z.email("Invalid email"),

@@ -5,6 +5,7 @@ import UserPosts from "../UserPosts/UserPosts";
 import ChangePasswordModal from "../ChangePasswordModal/ChangePasswordModal";
 import UploadProfilePhoto from "../UploadProfilePhoto/UploadProfilePhoto";
 import CreatePost from "../CreatePost/CreatePost";
+import { Card, Dropdown, DropdownItem } from "flowbite-react";
 
 export default function Profile() {
   function getUserData() {
@@ -29,22 +30,31 @@ export default function Profile() {
     return <div className="spinner"></div>;
   }
 
-  console.log(data?._id)
+  console.log(data?._id);
 
   return (
     <>
-      <div className="w-full md:w-[80%] lg:w-[60%] mx-auto mt-10 text-center border-2 border-slate-800 rounded-lg p-4">
-        <img src={data?.photo} className="size-[50px] mx-auto" alt="" />
-        <p>Name: {data?.name}</p>
-        <p>Gender: {data?.gender}</p>
-        <p>Email: {data?.email}</p>
-        <p>Birthday: {data?.dateOfBirth}</p>
-      </div>
+      <Card className="mx-auto my-15 sm:w-full md:w-[75%] lg:w-1/2">
+        <div className="flex flex-col items-center pb-10">
+          <img src={data?.photo} alt="" />
+          <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+            {data?.name}
+          </h5>
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            {data?.email}
+          </span>
+          <div className="mt-4 flex space-x-3 lg:mt-6">
+            <a href="#" className="inline-flex items-center">
+              <UploadProfilePhoto />
+            </a>
+            <a href="#" className="inline-flex items-center">
+              <ChangePasswordModal />
+            </a>
+          </div>
+          <CreatePost />
+        </div>
+      </Card>
 
-      <div className="w-full flex gap-4 justify-center md:w-[80%] lg:w-[60%] mx-auto mt-10 text-center border-2 border-slate-800 rounded-lg p-4">
-        <ChangePasswordModal />
-        <UploadProfilePhoto />
-      </div>
       <CreatePost />
       {data && <UserPosts id={data?._id} />}
     </>

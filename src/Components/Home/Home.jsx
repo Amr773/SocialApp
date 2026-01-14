@@ -9,11 +9,12 @@ import EditComment from "../EditComment/EditComment";
 import UpdatePost from "../UpdatePost/UpdatePost";
 import DeletePost from "../DeletePost/DeletePost";
 import { useUserData } from "../../Hooks/useUserData";
-
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 export default function Home() {
   const [editShow, seteditShow] = useState(false);
 
-  const{data:user} = useUserData()
+  const { data: user } = useUserData();
 
   function toggleEdit() {
     seteditShow(!editShow);
@@ -39,10 +40,50 @@ export default function Home() {
   // console.log(data.user._id);
 
   if (isLoading) {
-    return <div className="spinner"></div>;
+    return (
+      <div className="flex-col">
+        <div className=" p-4 rounded-lg h-[500px] mx-auto my-5 max-w-md shadow-2xl">
+          {/* User Info with Three-Dot Menu */}
+          <div className="flex items-center justify-between mb-4 ">
+            <Stack spacing={3}>
+              {/* For variant="text", adjust the height via font-size */}
+              <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+              {/* For other variants, adjust the size with `width` and `height` */}
+              <Skeleton variant="circular" width={40} height={40} />
+              <Skeleton variant="rectangular" width={400} height={150} />
+              <Skeleton variant="rounded" width={400} height={150} />
+            </Stack>
+          </div>
+        </div>
+        <div className=" p-4 rounded-lg h-[500px] mx-auto my-5 max-w-md shadow-2xl">
+          {/* User Info with Three-Dot Menu */}
+          <div className="flex items-center justify-between mb-4 ">
+            <Stack spacing={3}>
+              {/* For variant="text", adjust the height via font-size */}
+              <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+              {/* For other variants, adjust the size with `width` and `height` */}
+              <Skeleton variant="circular" width={40} height={40} />
+              <Skeleton variant="rectangular" width={400} height={150} />
+              <Skeleton variant="rounded" width={400} height={150} />
+            </Stack>
+          </div>
+        </div>
+        <div className=" p-4 rounded-lg h-[500px] mx-auto my-5 max-w-md shadow-2xl">
+          {/* User Info with Three-Dot Menu */}
+          <div className="flex items-center justify-between mb-4 ">
+            <Stack spacing={3}>
+              {/* For variant="text", adjust the height via font-size */}
+              <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+              {/* For other variants, adjust the size with `width` and `height` */}
+              <Skeleton variant="circular" width={40} height={40} />
+              <Skeleton variant="rectangular" width={400} height={150} />
+              <Skeleton variant="rounded" width={400} height={150} />
+            </Stack>
+          </div>
+        </div>
+      </div>
+    );
   }
-
-
 
   return (
     <>
@@ -50,10 +91,10 @@ export default function Home() {
       {data.map((post) => (
         <div
           key={post.id}
-          className="w-full md:w-[80%] lg:w-[60%] rounded-md my-8 p-4 mx-auto"
+          className="w-full   md:w-[80%] lg:w-[60%] rounded-md my-8 p-4 mx-auto"
         >
           <div className="flex items-center justify-center">
-            <div className="bg-white p-4 rounded-lg max-w-md shadow-2xl">
+            <div className=" p-4 w-full rounded-lg h-full max-w-md shadow-2xl">
               {/* User Info with Three-Dot Menu */}
               <div className="flex items-center justify-between mb-4 ">
                 <div className="flex items-center space-x-2">
